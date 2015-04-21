@@ -1,19 +1,22 @@
-salt (2014.7.5+ds-1precise1) precise; urgency=medium
+salt (2014.7.5+ds-1ubuntu1) trusty; urgency=medium
 
-  * [05986b9] Update to dependencies for saucy
-  * [0e88689] Update of ubuntu packaging files from upstream
-  * [adb0c8c] Dependencies for precise
-  * [2122661] Fix for salt issues #11274 and #10967
-  * [dec41ba] Re-added salt ufw config file
-  * [11b2bb5] Removed js dependencies
-  * [3692638] Added /etc/default/salt-minion file to pick up env vars
-  * [51b614b] Removed "su -c" from minion upstart script
-  * [76e59b8] Removed unnecessary build deps
-  * [686a9e4] Removed more build-deps
-  * [991e80a] Removed version requirement for sphinx
-  * [0a88c8b] Added python-debian as dependency
+  * [2c9238e] Updated dependencies and build for trusty
+  * [59a9c88] Update of ubuntu packaging files from upstream
+  * [8b2aadb] Fix for salt issues #11274 and #10967
+  * [3f697a1] Added /etc/default/salt-minion file to pick up env vars
+  * [baa3877] Re-added salt ufw config file
+  * [fe659dc] Removed "su -c" from minion upstart script
+  * [35372f7] Fixed stale pyc issue for trusty as well (Upstream issue: 13305)
+  * [84b5880] Fixed version number
+  * [7b29019] Also remove pyc files from /usr/lib/pymodules/python2.7/salt/
+  * [1f4ecc3] Fixed version
+  * [6c99950] Fix to version in preinst script
+  * [a46e0e0] Removed libcloud as explicit dependency until libcloud is backported
+  * [b29a1f3] Fix for build-deps
+  * [00fb7f9] Removed requirement for particular version of sphinx
+  * [a5f6e2e] Added python-debian as dependency
 
- -- Joe Healy <joehealy@gmail.com>  Wed, 22 Apr 2015 09:44:04 +1000
+ -- Joe Healy <joehealy@gmail.com>  Wed, 22 Apr 2015 00:30:53 +1000
 
 salt (2014.7.5+ds-1) UNRELEASED; urgency=medium
 
@@ -31,18 +34,19 @@ salt (2014.7.4+ds-1) UNRELEASED; urgency=medium
   [ Joe Healy ]
   * [510c0d1] Imported Upstream version 2014.7.4+ds
   * [8489807] Updated doc patches
-  * [05986b9] Update to dependencies for saucy
-  * [0e88689] Update of ubuntu packaging files from upstream
-  * [adb0c8c] Dependencies for precise
-  * [2122661] Fix for salt issues #11274 and #10967
-  * [dec41ba] Re-added salt ufw config file
-  * [11b2bb5] Removed js dependencies
-  * [3692638] Added /etc/default/salt-minion file to pick up env vars
-  * [51b614b] Removed "su -c" from minion upstart script
-  * [76e59b8] Removed unnecessary build deps
-  * [686a9e4] Removed more build-deps
-  * [991e80a] Removed version requirement for sphinx
-  * [0a88c8b] Added python-debian as dependency
+  * [2c9238e] Updated dependencies and build for trusty
+  * [59a9c88] Update of ubuntu packaging files from upstream
+  * [8b2aadb] Fix for salt issues #11274 and #10967
+  * [3f697a1] Added /etc/default/salt-minion file to pick up env vars
+  * [baa3877] Re-added salt ufw config file
+  * [fe659dc] Removed "su -c" from minion upstart script
+  * [35372f7] Fixed stale pyc issue for trusty as well (Upstream issue: 13305)
+  * [7b29019] Also remove pyc files from /usr/lib/pymodules/python2.7/salt/
+  * [6c99950] Fix to version in preinst script
+  * [a46e0e0] Removed libcloud as explicit dependency until libcloud is backported
+  * [b29a1f3] Fix for build-deps
+  * [00fb7f9] Removed requirement for particular version of sphinx
+  * [a5f6e2e] Added python-debian as dependency
 
  -- Joe Healy <joehealy@gmail.com>  Wed, 15 Apr 2015 23:08:49 +1000
 

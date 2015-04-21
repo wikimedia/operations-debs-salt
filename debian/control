@@ -2,14 +2,16 @@ Source: salt
 Section: admin
 Priority: extra
 Maintainer: Joe Healy <joehealy@gmail.com>
-Build-Depends: debhelper (>= 9),
+Uploaders: Joe Healy <joehealy@gmail.com>
+Build-Depends: debhelper (>= 9.20120410~),
                bash-completion,
                python | python-all | python-dev | python-all-dev,
                python-setuptools,
                python-debian,
-               python-sphinx (>= 1.0),
-               python-yaml
-Standards-Version: 3.9.5
+               dh-python,
+               python-debian,
+               python-sphinx (>= 1.0)
+Standards-Version: 3.9.6
 Homepage: http://saltstack.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-salt/salt.git
 Vcs-Git: git://anonscm.debian.org/pkg-salt/salt.git
@@ -56,8 +58,9 @@ Depends: ${misc:Depends},
          salt-common (= ${source:Version}),
          python-m2crypto,
          python-crypto,
-         msgpack-python,
-         python-zmq (>= 13.0.0)
+         python-msgpack,
+         python-zmq (>= 13.1.0)
+Recommends: python-git
 Description: remote manager to administer servers via salt
  salt is a powerful remote execution manager that can be used to
  administer servers in a fast and efficient way.
@@ -84,8 +87,8 @@ Depends: ${misc:Depends},
          salt-common (= ${source:Version}),
          python-m2crypto,
          python-crypto,
-         msgpack-python,
-         python-zmq (>= 13.0.0),
+         python-msgpack,
+         python-zmq (>= 13.1.0),
          dctrl-tools
 Recommends: dmidecode,
             debconf-utils
@@ -139,7 +142,7 @@ Architecture: all
 Depends: ${misc:Depends},
          ${python:Depends},
          salt-common (= ${source:Version}),
-         msgpack-python
+         python-msgpack
 Description: remote manager to administer servers via salt
  salt is a powerful remote execution manager that can be used to
  administer servers in a fast and efficient way.
@@ -165,7 +168,11 @@ Description: remote manager to administer servers via salt
 Package: salt-doc
 Architecture: all
 Section: doc
-Depends: ${misc:Depends}
+Depends: ${misc:Depends},
+	 libjs-sphinxdoc,
+	 libjs-modernizr,
+	 libjs-twitter-bootstrap,
+	 libjs-jquery
 Description: additional documentation for salt, the distributed remote execution system
  salt is a powerful remote execution manager that can be used to
  administer servers in a fast and efficient way.
