@@ -1,16 +1,18 @@
 Source: salt
 Section: admin
 Priority: extra
-Maintainer: Joe Healy <joehealy@gmail.com>
-Uploaders: Joe Healy <joehealy@gmail.com>
+Maintainer: Debian Salt Team <pkg-salt-team@lists.alioth.debian.org>
+Uploaders: Joe Healy <joehealy@gmail.com>,
+           Franklin G Mendoza <franklin.g.mendoza@gmail.com>,
+           Andriy Senkovych <jolly_roger@itblog.org.ua>
 Build-Depends: debhelper (>= 9.20120410~),
                bash-completion,
                python | python-all | python-dev | python-all-dev,
                python-setuptools,
                python-debian,
                dh-python,
-               python-debian,
-               python-sphinx (>= 1.0)
+               python-sphinx (>= 1.0),
+               dh-systemd (>= 1.4)
 Standards-Version: 3.9.6
 Homepage: http://saltstack.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-salt/salt.git
