@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+include /usr/share/python/python.mk
+
+%:
+	dh $@ --with python2,bash-completion
+
+override_dh_auto_build:
+	dh_auto_build
+	make -C doc html
+	make -C doc man
+
+override_dh_auto_clean:
+	make -C doc clean
+	dh_auto_clean
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod 2750 debian/salt-common/var/log/salt
+	chown root:adm debian/salt-common/var/log/salt
