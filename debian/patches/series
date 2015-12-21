@@ -4,4 +4,3 @@ prevent_intersphinx_network_access
 fix_2014.1.6_releasenotes
 missing_locale_dir
 make-log-file-group-readable.patch
-batch_returns_bad_dict_WMF.patch
