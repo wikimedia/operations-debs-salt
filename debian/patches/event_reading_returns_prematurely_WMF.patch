@@ -1,0 +1,35 @@
+Description: Continue reading events after reading one with wrong tag
+Author: Ariel T. Glenn <ariel@wikimedia.org>
+Forwarded: no
+--- a/salt/client/__init__.py
++++ b/salt/client/__init__.py
+@@ -808,11 +808,11 @@
+             if HAS_ZMQ:
+                 try:
+                     raw = event.get_event_noblock()
+-                    if (raw and (raw.get('tag', '').startswith(jid) or
+-                        any([raw.get('tag', '').startswith(tag) for tag in tag_search]))):
+-                        yield raw
+-                    else:
++                    if not raw:
+                         yield None
++                    elif (raw.get('tag', '').startswith(jid) or
++                        any([raw.get('tag', '').startswith(tag) for tag in tag_search])):
++                        yield raw
+                 except zmq.ZMQError as ex:
+                     if ex.errno == errno.EAGAIN or ex.errno == errno.EINTR:
+                         yield None
+@@ -820,10 +820,10 @@
+                         raise
+             else:
+                 raw = event.get_event_noblock()
+-                if raw and raw.get('tag', '').startswith(jid):
+-                    yield raw
+-                else:
++                if not raw:
+                     yield None
++                elif raw.get('tag', '').startswith(jid):
++                    yield raw
+ 
+     def get_iter_returns(
+             self,
