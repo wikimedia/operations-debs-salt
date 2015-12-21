@@ -1,3 +1,12 @@
+salt (2014.7.5+ds-1ubuntu1+wm1) trusty; urgency=medium
+
+  * trusty 2014.7.5 patch for batch cli returns with broken dict
+  * trusty 2014.7.5 continue reading events even after getting one with wrong tag
+  * make ping_on_rotate work without minion data cache
+  * 2014.7.5 trusty, backport patches for singleton SAuth class
+
+ -- Ariel T. Glenn <ariel@wikimedia.org>  Mon, 21 Dec 2015 09:39:58 +0000
+
 salt (2014.7.5+ds-1ubuntu1) trusty; urgency=medium
 
   * [2c9238e] Updated dependencies and build for trusty
