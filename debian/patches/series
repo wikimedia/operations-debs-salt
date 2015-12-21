@@ -6,3 +6,4 @@ missing_locale_dir
 make-log-file-group-readable.patch
 batch_returns_bad_dict_WMF.patch
 event_reading_returns_prematurely_WMF.patch
+ping_minions_without_data_cache_WMF.patch
