@@ -1,0 +1,15 @@
+Description: Consider all minions connected for pinging, workaround for missing minion data cache
+Bug: https://github.com/saltstack/salt/issues/29525
+Author: Ariel T. Glenn <ariel@wikimedia.org>
+Forwarded: no
+--- a/salt/utils/master.py
++++ b/salt/utils/master.py
+@@ -396,5 +396,6 @@
+ 
+ def ping_all_connected_minions(opts):
+     client = salt.client.LocalClient()
+-    ckminions = salt.utils.minions.CkMinions(opts)
+-    client.cmd(list(ckminions.connected_ids()), 'test.ping', expr_form='list')
++    client.cmd('*', 'test.ping')
++    # ckminions = salt.utils.minions.CkMinions(opts)
++    # client.cmd(list(ckminions.connected_ids()), 'test.ping', expr_form='list')
