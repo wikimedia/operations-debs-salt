@@ -1,3 +1,9 @@
+salt (2014.7.5+ds-1+wm2) unstable; urgency=medium
+
+  * jessie 2014.7.5 patch to apply pub_hwm to client pub socket
+
+ -- Ariel T. Glenn <ariel@wikimedia.org>  Tue, 29 Dec 2015 09:31:52 +0000
+
 salt (2014.7.5+ds-1+wm1) unstable; urgency=medium
 
   * jessie 2014.7.5 patch for batch cli returns with broken dict
