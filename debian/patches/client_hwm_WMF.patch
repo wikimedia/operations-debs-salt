@@ -1,0 +1,48 @@
+Description: Use pub_hwm setting for client pub socket
+Author: Ariel T. Glenn <ariel@wikimedia.org>
+Forwarded: no
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -108,7 +108,7 @@
+     '''
+     if transport == 'zeromq':
+         if node == 'master':
+-            return MasterEvent(sock_dir or opts.get('sock_dir', None))
++            return MasterEvent(sock_dir or opts.get('sock_dir', None), opts)
+         return SaltEvent(node, sock_dir, opts)
+     elif transport == 'raet':
+         import salt.utils.raetevent
+@@ -221,6 +221,14 @@
+         Establish the publish connection
+         '''
+         self.sub = self.context.socket(zmq.SUB)
++        # if 2.1 >= zmq < 3.0, we only have one HWM setting
++        try:
++            self.sub.setsockopt(zmq.HWM, self.opts.get('pub_hwm', 1000))
++        # in zmq >= 3.0, there are separate send and receive HWM settings
++        except AttributeError:
++            self.sub.setsockopt(zmq.SNDHWM, self.opts.get('pub_hwm', 1000))
++            self.sub.setsockopt(zmq.RCVHWM, self.opts.get('pub_hwm', 1000))
++
+         self.sub.connect(self.puburi)
+         self.poller.register(self.sub, zmq.POLLIN)
+         self.sub.setsockopt(zmq.SUBSCRIBE, '')
+@@ -234,6 +242,7 @@
+         The linger timeout must be at least as long as this timeout
+         '''
+         self.push = self.context.socket(zmq.PUSH)
++
+         try:
+             # bug in 0MQ default send timeout of -1 (infinite) is not infinite
+             self.push.setsockopt(zmq.SNDTIMEO, timeout)
+@@ -491,8 +500,8 @@
+     '''
+     Create a master event management object
+     '''
+-    def __init__(self, sock_dir):
+-        super(MasterEvent, self).__init__('master', sock_dir)
++    def __init__(self, sock_dir, opts=None):
++        super(MasterEvent, self).__init__('master', sock_dir, opts=opts)
+ 
+ 
+ class LocalClientEvent(MasterEvent):
