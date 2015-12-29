@@ -1,3 +1,9 @@
+salt (2014.7.5+ds-1precise1+wm2) precise; urgency=medium
+
+  * precise 2014.7.5 patch to apply pub_hwm to client pub socket
+
+ -- Ariel T. Glenn <ariel@wikimedia.org>  Mon, 21 Dec 2015 11:03:32 +0000
+
 salt (2014.7.5+ds-1precise1+wm1) precise; urgency=medium
 
   * precise 2014.7.5 patch for batch cli returns with broken dict
